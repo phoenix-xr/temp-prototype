@@ -11,6 +11,7 @@ import { VehicleDetailModal } from './components/panels/VehicleDetailModal';
 import { RiskSpotModal } from './components/panels/RiskSpotModal';
 import { DeployVehicleModal } from './components/panels/DeployVehicleModal';
 import { DataLayerToggles } from './components/panels/DataLayerToggles';
+import { RoadAccessibilityLegendCard } from './components/panels/RoadAccessibilityLegendCard';
 import { AIExplainabilityCard } from './components/panels/AIExplainabilityCard';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 
@@ -36,6 +37,7 @@ export function App() {
     mapTileLayer: 'osm',
     activeDataLayers: {
       spatialMicroGrid: false,
+      roadAccessibilityNetwork: true, // Show Safe/Moderate/Blocked road accessibility network by default!
       precipitationSpots: true,
       soilQualitySpots: false,
       slopeGradientSpots: false,
@@ -128,13 +130,21 @@ export function App() {
           onSelectVehicle={(id) => setSelectedVehicleId(id)}
           onSelectHazard={(hazard) => setSelectedHazard(hazard)}
           isDeployModeActive={isDeployModeActive}
+          onToggleMapDeployMode={(active) => setIsDeployModeActive(active)}
           onMapClickDeploy={handleMapClickDeploy}
+          onOpenDeployModal={() => setIsDeployModalOpen(true)}
         />
 
         {/* Environmental Prediction Data Layer Toggles Toolbar */}
         <DataLayerToggles
           activeDataLayers={simState.activeDataLayers}
           onToggleLayer={handleToggleDataLayer}
+        />
+
+        {/* Road Accessibility Legend Card (Safe / Moderate Risk / Blocked / No data) */}
+        <RoadAccessibilityLegendCard
+          isVisible={simState.activeDataLayers.roadAccessibilityNetwork}
+          onToggle={() => handleToggleDataLayer('roadAccessibilityNetwork')}
         />
 
         {/* Floating Sidebar Toggle Button */}
@@ -166,7 +176,7 @@ export function App() {
         />
       </main>
 
-      {/* Google Maps style Hazard & Landslide Risk Modal (when clicking Red Path or Hazard Pin) */}
+      {/* Google Maps style Hazard & Landslide Risk Modal (when clicking Red Blocked Path or Hazard Pin) */}
       {selectedHazard && (
         <RiskSpotModal
           hazard={selectedHazard}
@@ -183,7 +193,7 @@ export function App() {
         onToggleMapDeployMode={(active) => setIsDeployModeActive(active)}
       />
 
-      {/* Vehicle Route Intelligence Inspector (Safe Green vs Unsafe Red paths) */}
+      {/* Vehicle Route Intelligence Inspector */}
       {currentSelectedVehicle && (
         <VehicleDetailModal
           vehicle={currentSelectedVehicle}

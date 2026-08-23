@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%" style="background-color:#ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <!-- Explicit Pure White Background -->
+  <rect width="1200" height="680" fill="#ffffff" />
+
+  <!-- Main Title & Subtitle -->
+  <text x="600" y="42" text-anchor="middle" font-size="28" font-weight="900" fill="#0f172a" letter-spacing="-0.5">
+    SYSTEM ARCHITECTURE
+  </text>
+  <text x="600" y="68" text-anchor="middle" font-size="13" font-weight="600" fill="#475569">
+    NER-LOGIX AI • Predictive Landslide Risk Logistics &amp; Dynamic Safe Routing Architecture
+  </text>
+
+  <!-- ================= TIER 1: DATA INGESTION ================= -->
+  <rect x="40" y="90" width="1120" height="105" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="2" />
+  <text x="60" y="112" font-size="12" font-weight="800" fill="#0f172a" letter-spacing="0.5">1. SATELLITE, TERRAIN &amp; FLEET SENSOR INGESTION LAYER</text>
+
+  <g transform="translate(60, 122)">
+    <!-- Item 1 -->
+    <rect x="0" y="0" width="204" height="60" rx="8" fill="#ffffff" stroke="#0284c7" stroke-width="2" />
+    <text x="102" y="26" text-anchor="middle" font-size="13" font-weight="800" fill="#0f172a">🌧️ Weather &amp; Rain</text>
+    <text x="102" y="46" text-anchor="middle" font-size="11" font-weight="700" fill="#0369a1">Open-Meteo &amp; IMD Radar</text>
+
+    <!-- Item 2 -->
+    <rect x="220" y="0" width="204" height="60" rx="8" fill="#ffffff" stroke="#059669" stroke-width="2" />
+    <text x="322" y="26" text-anchor="middle" font-size="13" font-weight="800" fill="#0f172a">⛰️ 30m DEM Slope</text>
+    <text x="322" y="46" text-anchor="middle" font-size="11" font-weight="700" fill="#047857">ISRO Bhuvan CartoDEM</text>
+
+    <!-- Item 3 -->
+    <rect x="440" y="0" width="204" height="60" rx="8" fill="#ffffff" stroke="#d97706" stroke-width="2" />
+    <text x="542" y="26" text-anchor="middle" font-size="13" font-weight="800" fill="#0f172a">💧 Soil Moisture</text>
+    <text x="542" y="46" text-anchor="middle" font-size="11" font-weight="700" fill="#b45309">NASA SMAP / MOSDAC</text>
+
+    <!-- Item 4 -->
+    <rect x="660" y="0" width="204" height="60" rx="8" fill="#ffffff" stroke="#dc2626" stroke-width="2" />
+    <text x="762" y="26" text-anchor="middle" font-size="13" font-weight="800" fill="#0f172a">⚠️ Slide History</text>
+    <text x="762" y="46" text-anchor="middle" font-size="11" font-weight="700" fill="#b91c1c">GSI 25k NLSM Catalog</text>
+
+    <!-- Item 5 -->
+    <rect x="880" y="0" width="200" height="60" rx="8" fill="#ffffff" stroke="#2563eb" stroke-width="2" />
+    <text x="980" y="26" text-anchor="middle" font-size="13" font-weight="800" fill="#0f172a">🚚 GPS Fleet Telemetry</text>
+    <text x="980" y="46" text-anchor="middle" font-size="11" font-weight="700" fill="#1d4ed8">Vehicle IoT &amp; OSRM Roads</text>
+  </g>
+
+  <!-- Down Arrow 1 -->
+  <g transform="translate(600, 198)">
+    <line x1="0" y1="0" x2="0" y2="18" stroke="#334155" stroke-width="3" />
+    <polygon points="-6,18 6,18 0,26" fill="#1e293b" />
+  </g>
+
+  <!-- ================= TIER 2: SECURITY & API GATEWAY ================= -->
+  <rect x="40" y="228" width="1120" height="85" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2" />
+  <text x="60" y="250" font-size="12" font-weight="800" fill="#1e3a8a" letter-spacing="0.5">2. SECURITY &amp; CORE API GATEWAY LAYER</text>
+
+  <g transform="translate(60, 260)">
+    <!-- Auth Box -->
+    <rect x="0" y="0" width="490" height="42" rx="8" fill="#1e40af" stroke="#172554" stroke-width="1.5" />
+    <text x="245" y="26" text-anchor="middle" font-size="14" font-weight="800" fill="#ffffff">🔐 Authentication Layer (JWT / OAuth 2.0 &amp; RBAC)</text>
+
+    <!-- Arrow inside Tier 2 -->
+    <line x1="505" y1="21" x2="575" y2="21" stroke="#1e40af" stroke-width="3" />
+    <polygon points="575,15 575,27 587,21" fill="#1e40af" />
+
+    <!-- Gateway Box -->
+    <rect x="590" y="0" width="490" height="42" rx="8" fill="#0369a1" stroke="#082f49" stroke-width="1.5" />
+    <text x="835" y="26" text-anchor="middle" font-size="14" font-weight="800" fill="#ffffff">⚡ High-Speed API Gateway (FastAPI / Load Balancer)</text>
+  </g>
+
+  <!-- Down Arrow 2 -->
+  <g transform="translate(600, 316)">
+    <line x1="0" y1="0" x2="0" y2="18" stroke="#334155" stroke-width="3" />
+    <polygon points="-6,18 6,18 0,26" fill="#1e293b" />
+  </g>
+
+  <!-- ================= TIER 3: AI ENGINE & DATABASE ================= -->
+  <rect x="40" y="338" width="1120" height="160" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2" />
+  <text x="60" y="360" font-size="12" font-weight="800" fill="#14532d" letter-spacing="0.5">3. AI PREDICTION ENGINE &amp; SPATIAL DATABASE LAYER</text>
+
+  <g transform="translate(60, 370)">
+    <!-- AI Models Card -->
+    <rect x="0" y="0" width="520" height="116" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="2" />
+    <text x="260" y="26" text-anchor="middle" font-size="14" font-weight="900" fill="#14532d">🧠 AI &amp; Geotechnical Physics Engine</text>
+    <line x1="20" y1="36" x2="500" y2="36" stroke="#cbd5e1" stroke-width="1.5" />
+    
+    <text x="25" y="58" font-size="12" font-weight="800" fill="#0f172a">• XGBoost + Random Forest: <tspan font-weight="600" fill="#047857">Landslide Susceptibility Index (LSI)</tspan></text>
+    <text x="25" y="80" font-size="12" font-weight="800" fill="#0f172a">• Hydrological Bi-LSTM: <tspan font-weight="600" fill="#047857">Pore-Water Saturation Early Warning</tspan></text>
+    <text x="25" y="102" font-size="12" font-weight="800" fill="#0f172a">• Risk-Constrained Routing: <tspan font-weight="600" fill="#047857">OSRM Safe Green Path vs Red Blocked</tspan></text>
+
+    <!-- Two-way Arrow between AI & DB -->
+    <g transform="translate(528, 58)">
+      <line x1="0" y1="0" x2="16" y2="0" stroke="#0f172a" stroke-width="3" />
+      <polygon points="0,-5 0,5 -7,0" fill="#0f172a" />
+      <polygon points="16,-5 16,5 23,0" fill="#0f172a" />
+    </g>
+
+    <!-- Database Card -->
+    <rect x="550" y="0" width="530" height="116" rx="8" fill="#ffffff" stroke="#7c3aed" stroke-width="2" />
+    <text x="815" y="26" text-anchor="middle" font-size="14" font-weight="900" fill="#581c87">💾 Spatial Database &amp; Real-time Middleware</text>
+    <line x1="570" y1="36" x2="1060" y2="36" stroke="#cbd5e1" stroke-width="1.5" />
+
+    <text x="575" y="58" font-size="12" font-weight="800" fill="#0f172a">• PostgreSQL + PostGIS: <tspan font-weight="600" fill="#6d28d9">Spatial GIS Road Network &amp; Elevation DEM</tspan></text>
+    <text x="575" y="80" font-size="12" font-weight="800" fill="#0f172a">• TimescaleDB / MongoDB: <tspan font-weight="600" fill="#6d28d9">Convoy GPS Telemetry &amp; Weather History</tspan></text>
+    <text x="575" y="102" font-size="12" font-weight="800" fill="#0f172a">• WebSockets &amp; Redis Pub/Sub: <tspan font-weight="600" fill="#6d28d9">60 FPS Fleet Updates &amp; Instant Alerts</tspan></text>
+  </g>
+
+  <!-- Down Arrow 3 -->
+  <g transform="translate(600, 500)">
+    <line x1="0" y1="0" x2="0" y2="18" stroke="#334155" stroke-width="3" />
+    <polygon points="-6,18 6,18 0,26" fill="#1e293b" />
+  </g>
+
+  <!-- ================= TIER 4: ENDPOINTS & COMMAND DASHBOARD ================= -->
+  <rect x="40" y="522" width="1120" height="135" rx="10" fill="#fefce8" stroke="#ca8a04" stroke-width="2" />
+  <text x="60" y="544" font-size="12" font-weight="800" fill="#713f12" letter-spacing="0.5">4. DISASTER LOGISTICS SERVICES &amp; TACTICAL COMMAND DASHBOARD</text>
+
+  <g transform="translate(60, 554)">
+    <!-- Service 1 -->
+    <rect x="0" y="0" width="235" height="90" rx="8" fill="#ffffff" stroke="#ca8a04" stroke-width="1.8" />
+    <text x="117" y="24" text-anchor="middle" font-size="13" font-weight="900" fill="#0f172a">🛣️ GET /roads</text>
+    <text x="117" y="46" text-anchor="middle" font-size="11" font-weight="800" fill="#047857">🟢 Safe  🟡 Moderate  🔴 Blocked</text>
+    <text x="117" y="68" text-anchor="middle" font-size="11" font-weight="600" fill="#475569">Real-time Road Accessibility</text>
+
+    <!-- Service 2 -->
+    <rect x="250" y="0" width="235" height="90" rx="8" fill="#ffffff" stroke="#ca8a04" stroke-width="1.8" />
+    <text x="367" y="24" text-anchor="middle" font-size="13" font-weight="900" fill="#0f172a">📍 POST /route/optimize</text>
+    <text x="367" y="46" text-anchor="middle" font-size="11" font-weight="800" fill="#0284c7">Dynamic OSRM Safe Corridors</text>
+    <text x="367" y="68" text-anchor="middle" font-size="11" font-weight="600" fill="#475569">Direct to Central Warehouse</text>
+
+    <!-- Service 3 -->
+    <rect x="500" y="0" width="235" height="90" rx="8" fill="#ffffff" stroke="#ca8a04" stroke-width="1.8" />
+    <text x="617" y="24" text-anchor="middle" font-size="13" font-weight="900" fill="#0f172a">🔔 POST /alerts/disaster</text>
+    <text x="617" y="46" text-anchor="middle" font-size="11" font-weight="800" fill="#b91c1c">Early-Warning Slide Alarms</text>
+    <text x="617" y="68" text-anchor="middle" font-size="11" font-weight="600" fill="#475569">Automated Convoy Rerouting</text>
+
+    <!-- Dashboard Main Card -->
+    <rect x="750" y="0" width="330" height="90" rx="8" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
+    <text x="915" y="26" text-anchor="middle" font-size="13" font-weight="900" fill="#0f172a">🏢 NER-LOGIX COMMAND DASHBOARD</text>
+    <text x="915" y="48" text-anchor="middle" font-size="11" font-weight="800" fill="#854d0e">React 19 + TypeScript + Leaflet + shadcn/ui</text>
+    <text x="915" y="70" text-anchor="middle" font-size="11" font-weight="700" fill="#0f172a">Real-Time Tactical GIS Convoy Dispatch</text>
+  </g>
+</svg>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { CloudRain, Droplets, Mountain, History, Grid, Layers } from 'lucide-react';
+import { CloudRain, Droplets, Mountain, History, Grid, Layers, Route } from 'lucide-react';
 import type { SimulationState } from '../../types/logistics';
 
 interface DataLayerTogglesProps {
@@ -16,12 +16,32 @@ export const DataLayerToggles: React.FC<DataLayerTogglesProps> = ({
       <div className="flex items-center justify-between pb-2 border-b border-zinc-800 px-1">
         <span className="text-xs font-semibold text-zinc-200 flex items-center gap-1.5 font-sans">
           <Layers className="w-3.5 h-3.5 text-zinc-400" />
-          Spatial Data Layers
+          Spatial & Road Layers
         </span>
         <span className="text-[10px] text-zinc-500 font-mono">GIS FILTERS</span>
       </div>
 
-      {/* 0. Button to Toggle View of Grids Used to Collect Data */}
+      {/* 0. Road Accessibility Network (Safe / Moderate / Blocked) */}
+      <button
+        onClick={() => onToggleLayer('roadAccessibilityNetwork')}
+        className={`w-full px-2.5 py-1.5 rounded-lg text-xs font-medium flex items-center justify-between transition-colors border ${
+          activeDataLayers.roadAccessibilityNetwork
+            ? 'bg-zinc-800 border-emerald-500/50 text-emerald-200 shadow-sm'
+            : 'bg-zinc-900/50 border-zinc-800 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/60'
+        }`}
+      >
+        <span className="flex items-center gap-2">
+          <Route className="w-3.5 h-3.5 text-emerald-400" />
+          <span>Road Accessibility Network</span>
+        </span>
+        <span className={`text-[10px] font-mono font-semibold px-1.5 py-0.5 rounded ${
+          activeDataLayers.roadAccessibilityNetwork ? 'bg-emerald-950 text-emerald-300 border border-emerald-800' : 'text-zinc-500 bg-zinc-900'
+        }`}>
+          {activeDataLayers.roadAccessibilityNetwork ? 'ON' : 'OFF'}
+        </span>
+      </button>
+
+      {/* 1. Spatial Data Collection Grid */}
       <button
         onClick={() => onToggleLayer('spatialMicroGrid')}
         className={`w-full px-2.5 py-1.5 rounded-lg text-xs font-medium flex items-center justify-between transition-colors border ${
@@ -41,7 +61,7 @@ export const DataLayerToggles: React.FC<DataLayerTogglesProps> = ({
         </span>
       </button>
 
-      {/* 1. Precipitation Toggle */}
+      {/* 2. Precipitation Storm Cells */}
       <button
         onClick={() => onToggleLayer('precipitationSpots')}
         className={`w-full px-2.5 py-1.5 rounded-lg text-xs font-medium flex items-center justify-between transition-colors border ${
@@ -61,7 +81,7 @@ export const DataLayerToggles: React.FC<DataLayerTogglesProps> = ({
         </span>
       </button>
 
-      {/* 2. Soil Moisture Toggle */}
+      {/* 3. Soil Moisture */}
       <button
         onClick={() => onToggleLayer('soilQualitySpots')}
         className={`w-full px-2.5 py-1.5 rounded-lg text-xs font-medium flex items-center justify-between transition-colors border ${
@@ -81,7 +101,7 @@ export const DataLayerToggles: React.FC<DataLayerTogglesProps> = ({
         </span>
       </button>
 
-      {/* 3. Steep Slope Gradient Toggle */}
+      {/* 4. Steep Slope Gradient */}
       <button
         onClick={() => onToggleLayer('slopeGradientSpots')}
         className={`w-full px-2.5 py-1.5 rounded-lg text-xs font-medium flex items-center justify-between transition-colors border ${
@@ -101,7 +121,7 @@ export const DataLayerToggles: React.FC<DataLayerTogglesProps> = ({
         </span>
       </button>
 
-      {/* 4. Historical Landslide Records Toggle */}
+      {/* 5. Historical Landslide Records */}
       <button
         onClick={() => onToggleLayer('historicalLandslides')}
         className={`w-full px-2.5 py-1.5 rounded-lg text-xs font-medium flex items-center justify-between transition-colors border ${

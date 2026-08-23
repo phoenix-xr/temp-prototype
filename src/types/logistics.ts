@@ -1,4 +1,4 @@
-export type RiskLevel = 'SAFE' | 'MODERATE' | 'CRITICAL' | 'BLOCKED';
+export type AccessibilityStatus = 'SAFE' | 'MODERATE_RISK' | 'BLOCKED' | 'NO_DATA';
 
 export interface LatLng {
   lat: number;
@@ -10,24 +10,34 @@ export interface Waypoint extends LatLng {
   elevation?: number;
 }
 
+export interface RoadSegmentNetwork {
+  id: string;
+  name: string;
+  status: AccessibilityStatus;
+  statusLabel: string;
+  riskScore: number; // 0 - 100
+  waypoints: LatLng[];
+  hazardDetail?: HazardRiskDetail;
+  delayMin?: number;
+}
+
 export interface SpatialMicroPatch {
   id: string;
-  sectorCode: string; // e.g. "SEC-ML-01", "SEC-US-04"
+  sectorCode: string;
   name: string;
   subRegion: string;
   polygon: LatLng[];
   center: LatLng;
   areaSqKm: number;
   elevationMeanM: number;
-  // Localized Environmental Telemetry (Independent per patch)
-  precipitationMm: number; // Localized rainfall rate mm/h
+  precipitationMm: number;
   rain72hAccumulatedMm: number;
-  soilSaturationPercent: number; // Localized pore-water pressure
+  soilSaturationPercent: number;
   soilType: string;
-  slopeGradientDeg: number; // Localized slope from DEM
+  slopeGradientDeg: number;
   historicalFailureCount: number;
-  computedLSI: number; // 0 - 100
-  riskLevel: RiskLevel;
+  computedLSI: number;
+  riskLevel: 'SAFE' | 'MODERATE' | 'CRITICAL';
   sensorFeeds: {
     radarStation: string;
     inclinometerId: string;
@@ -75,6 +85,7 @@ export interface RouteOption {
   id: string;
   name: string;
   isSafeOptimal: boolean;
+  status: AccessibilityStatus;
   description: string;
   totalDistanceKm: number;
   estimatedDurationMin: number;
@@ -126,7 +137,8 @@ export interface SimulationState {
   selectedPatch: SpatialMicroPatch | null;
   mapTileLayer: 'osm' | 'dark' | 'satellite' | 'terrain';
   activeDataLayers: {
-    spatialMicroGrid: boolean; // Show localized micro-sectors
+    spatialMicroGrid: boolean;
+    roadAccessibilityNetwork: boolean;
     precipitationSpots: boolean;
     soilQualitySpots: boolean;
     slopeGradientSpots: boolean;

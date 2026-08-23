@@ -5,7 +5,7 @@ import { CENTRAL_WAREHOUSE, SHILLONG_MICRO_PATCHES } from '../data/nerCorridors'
 export async function calculateLiveRoute(
   start: LatLng,
   destination: LatLng = CENTRAL_WAREHOUSE.location
-): Promise<{ safeRoute: RouteOption; dangerRoute?: RouteOption; distanceKm: number; durationMin: number }> {
+): Promise<{ safeRoute: RouteOption; distanceKm: number; durationMin: number }> {
   try {
     const coordStr = `${start.lng},${start.lat};${destination.lng},${destination.lat}`;
     const url = `https://router.project-osrm.org/route/v1/driving/${coordStr}?overview=full&geometries=geojson`;
@@ -30,6 +30,7 @@ export async function calculateLiveRoute(
         id: `RT_DYN_SAFE_${Date.now()}`,
         name: 'AI Calculated Safe Corridor to Central Warehouse',
         isSafeOptimal: true,
+        status: 'SAFE',
         description: 'Road-snapped dynamic route avoiding high-risk shear slopes & saturated clay patches.',
         totalDistanceKm: distanceKm,
         estimatedDurationMin: durationMin,
@@ -57,6 +58,7 @@ export async function calculateLiveRoute(
     id: `RT_DYN_SAFE_${Date.now()}`,
     name: 'AI Calculated Safe Corridor (Interpolated)',
     isSafeOptimal: true,
+    status: 'SAFE',
     description: 'Dynamic direct routing with continuous slope drainage buffer.',
     totalDistanceKm: dist,
     estimatedDurationMin: Math.round(dist * 2.2),
@@ -116,7 +118,6 @@ function generateInterpolatedWaypoints(start: LatLng, end: LatLng, steps = 30): 
   const points: Waypoint[] = [];
   for (let i = 0; i <= steps; i++) {
     const t = i / steps;
-    // Add realistic mountain curve offset
     const curve = Math.sin(t * Math.PI) * 0.004;
     points.push({
       lat: Number((start.lat + (end.lat - start.lat) * t + curve).toFixed(6)),
